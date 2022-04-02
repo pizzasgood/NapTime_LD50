@@ -1,0 +1,5 @@
+.import
+*.translation
+.mono
+out
+logs

@@ -1,0 +1,102 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://OptionsWindow.gd" type="Script" id=1]
+
+[node name="OptionsWindow" type="PopupPanel"]
+pause_mode = 2
+margin_right = 614.0
+margin_bottom = 360.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 610.0
+margin_bottom = 356.0
+size_flags_horizontal = 3
+
+[node name="Header" type="Label" parent="VBoxContainer"]
+margin_right = 598.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 1, 0.866667, 0.0666667, 1 )
+text = "Options"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+margin_top = 18.0
+margin_right = 598.0
+margin_bottom = 22.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+margin_top = 26.0
+margin_right = 598.0
+margin_bottom = 310.0
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/ScrollContainer"]
+margin_right = 598.0
+margin_bottom = 56.0
+size_flags_horizontal = 3
+columns = 2
+
+[node name="MasterVolumeLabel" type="Label" parent="VBoxContainer/ScrollContainer/GridContainer"]
+margin_top = 1.0
+margin_right = 68.0
+margin_bottom = 15.0
+text = "Master Vol"
+align = 2
+
+[node name="MasterVolume" type="HSlider" parent="VBoxContainer/ScrollContainer/GridContainer"]
+margin_left = 72.0
+margin_right = 598.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.025
+
+[node name="SFXVolumeLabel" type="Label" parent="VBoxContainer/ScrollContainer/GridContainer"]
+margin_top = 21.0
+margin_right = 68.0
+margin_bottom = 35.0
+text = "SFX Vol"
+align = 2
+
+[node name="SFXVolume" type="HSlider" parent="VBoxContainer/ScrollContainer/GridContainer"]
+margin_left = 72.0
+margin_top = 20.0
+margin_right = 598.0
+margin_bottom = 36.0
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.025
+
+[node name="MusicVolumeLabel" type="Label" parent="VBoxContainer/ScrollContainer/GridContainer"]
+margin_top = 41.0
+margin_right = 68.0
+margin_bottom = 55.0
+text = "Music Vol"
+align = 2
+
+[node name="MusicVolume" type="HSlider" parent="VBoxContainer/ScrollContainer/GridContainer"]
+margin_left = 72.0
+margin_top = 40.0
+margin_right = 598.0
+margin_bottom = 56.0
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.025
+
+[node name="ResumeButton" type="Button" parent="VBoxContainer"]
+margin_top = 314.0
+margin_right = 598.0
+margin_bottom = 344.0
+text = "Return"
+
+[connection signal="about_to_show" from="." to="." method="_on_OptionsWindow_about_to_show"]
+[connection signal="popup_hide" from="." to="." method="_on_OptionsWindow_popup_hide"]
+[connection signal="value_changed" from="VBoxContainer/ScrollContainer/GridContainer/MasterVolume" to="." method="_on_MasterVolume_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/ScrollContainer/GridContainer/SFXVolume" to="." method="_on_SFXVolume_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/ScrollContainer/GridContainer/MusicVolume" to="." method="_on_MusicVolume_value_changed"]
+[connection signal="pressed" from="VBoxContainer/ResumeButton" to="." method="_on_ResumeButton_pressed"]

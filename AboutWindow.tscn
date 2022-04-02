@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Licenses.tscn" type="PackedScene" id=1]
+[ext_resource path="res://AboutWindow.gd" type="Script" id=2]
+
+[node name="AboutWindow" type="PopupPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 1020.0
+margin_bottom = 596.0
+size_flags_horizontal = 3
+
+[node name="Header" type="Label" parent="VBoxContainer"]
+margin_right = 1016.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 1, 0.866667, 0.0666667, 1 )
+text = "Nap Time"
+
+[node name="Body" type="Label" parent="VBoxContainer"]
+margin_top = 18.0
+margin_right = 1016.0
+margin_bottom = 151.0
+text = "This is my entry for the Ludum Dare 50 Compo, a contest to build a game in 48 hours.  This event's theme was: Delay the inevitable.
+
+Copyright © 2022 Pizzasgood
+
+This software is released under the GPL v3.
+https://www.gnu.org/licenses/gpl.txt
+
+The following software is used in Nap Time:"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+margin_top = 155.0
+margin_right = 1016.0
+margin_bottom = 159.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+margin_top = 163.0
+margin_right = 1016.0
+margin_bottom = 558.0
+size_flags_vertical = 3
+
+[node name="Licenses" parent="VBoxContainer/ScrollContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1016.0
+
+[node name="ResumeButton" type="Button" parent="VBoxContainer"]
+margin_top = 562.0
+margin_right = 1016.0
+margin_bottom = 592.0
+text = "Return"
