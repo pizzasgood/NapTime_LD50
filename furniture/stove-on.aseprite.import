@@ -1,0 +1,20 @@
+[remap]
+
+importer="aseprite_importer"
+type="SpriteFrames"
+path="res://.import/stove-on.aseprite-1eb004ec5ecf21356399b0ee35a2efc3.tres"
+
+[deps]
+
+source_file="res://furniture/stove-on.aseprite"
+dest_files=[ "res://.import/stove-on.aseprite-1eb004ec5ecf21356399b0ee35a2efc3.tres" ]
+
+[params]
+
+mipmaps=true
+repeat=true
+filter=false
+anisotropic_filter=false
+convert_to_linear=false
+mirrored_repeat=false
+video_surface=false
