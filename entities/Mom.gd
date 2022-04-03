@@ -21,6 +21,13 @@ onready var arm_offsets = [arms[0].position.x, arms[1].position.x]
 onready var target : KinematicBody2D = get_tree().get_nodes_in_group("player")[0]
 
 
+func _ready() -> void:
+	if target.global_position.x > self.global_position.x:
+		face_right()
+	else:
+		face_left()
+
+
 func _physics_process(_delta: float) -> void:
 	if mobile:
 		handle_ai()
@@ -42,17 +49,9 @@ func _physics_process(_delta: float) -> void:
 
 func _process(_delta: float) -> void:
 	if velocity.x > 0:
-		sprite.flip_h = false
-		for arm in arms:
-			arm.set_flip(false)
-		arms[0].position.x = arm_offsets[0]
-		arms[1].position.x = arm_offsets[1]
+		face_right()
 	if velocity.x < 0:
-		sprite.flip_h = true
-		for arm in arms:
-			arm.set_flip(true)
-		arms[0].position.x = -arm_offsets[0]
-		arms[1].position.x = -arm_offsets[1]
+		face_left()
 
 
 func handle_input() -> void:
@@ -104,3 +103,19 @@ func handle_ai() -> void:
 	if new_state != ai_virtual_actions:
 		ai_virtual_actions = new_state.duplicate(true)
 		ai_actions_buffer.append([new_state.duplicate(true), now + reaction_time])
+
+
+func face_right() -> void:
+		sprite.flip_h = false
+		for arm in arms:
+			arm.set_flip(false)
+		arms[0].position.x = arm_offsets[0]
+		arms[1].position.x = arm_offsets[1]
+
+
+func face_left() -> void:
+		sprite.flip_h = true
+		for arm in arms:
+			arm.set_flip(true)
+		arms[0].position.x = -arm_offsets[0]
+		arms[1].position.x = -arm_offsets[1]
