@@ -62,9 +62,7 @@ func handle_input() -> void:
 	# jumping
 	if Input.is_action_pressed("ui_up"):
 		if is_on_floor():
-			jumping = true
-			jump_started = OS.get_ticks_msec()
-			jump_sfx.play()
+			start_jump()
 		if jumping and OS.get_ticks_msec() < jump_started + jump_control_time:
 			velocity.y = -jump_speed
 		else:
@@ -82,6 +80,12 @@ func handle_input() -> void:
 			grab_item()
 	if Input.is_action_just_released("ui_accept") and item != null:
 		stop_using_item()
+
+
+func start_jump() -> void:
+	jumping = true
+	jump_started = OS.get_ticks_msec()
+	jump_sfx.play()
 
 
 func grab_item() -> void:

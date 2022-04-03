@@ -4,6 +4,7 @@ extends Node2D
 var rider : Node2D
 var rider_gravity : float
 var rider_parent : Node
+var jumping_off := false
 
 var omega := 0.0
 var max_omega := TAU
@@ -73,7 +74,11 @@ func _on_Area2D_body_entered(body: Node2D) -> void:
 func handle_input(delta: float) -> void:
 	if not is_instance_valid(rider):
 		return
-	if Input.is_action_just_pressed("ui_up") or Input.is_action_just_pressed("ui_down"):
+	if Input.is_action_just_pressed("ui_up"):
+		jumping_off = true
+		call_deferred("release_body")
+	if Input.is_action_just_pressed("ui_down"):
+		jumping_off = false
 		call_deferred("release_body")
 	if Input.is_action_pressed("ui_left"):
 		omega -= swing_thrust * delta
@@ -93,10 +98,13 @@ func take_body(body: Node2D) -> void:
 	rider_parent.remove_child(rider)
 	add_child(rider)
 	rider.position = rider_pos
+	jumping_off = false
 
 
 func release_body() ->void:
 	rider.velocity = get_tangential_velocity(rider.position)
+	if jumping_off:
+		rider.start_jump()
 	var rider_pos = rider.global_position
 	remove_child(rider)
 	rider_parent.add_child(rider)
@@ -109,7 +117,8 @@ func release_body() ->void:
 
 
 func get_tangential_velocity(point: Vector2) -> Vector2:
-	return point.tangent() * omega
+	var actual_point = to_global(point) - global_position
+	return actual_point.tangent() * omega
 
 
 func get_angular_velocity(point: Vector2, velocity: Vector2) -> float:
