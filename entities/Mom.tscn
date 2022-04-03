@@ -6,7 +6,7 @@
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 18.0
-height = 88.0
+height = 92.0
 
 [node name="Mom" type="KinematicBody2D" groups=["enemies"]]
 script = ExtResource( 2 )
