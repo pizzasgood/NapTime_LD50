@@ -22,6 +22,10 @@ Globals="*res://Globals.gd"
 
 gdscript/warnings/return_value_discarded=false
 
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/aseprite_importer/plugin.cfg" )
+
 [gui]
 
 theme/custom="res://main_theme.tres"
