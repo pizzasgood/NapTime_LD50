@@ -13,6 +13,7 @@ config_version=4
 config/name="Nap Time"
 config/description="An entry for the Ludum Dare 50 Compo, a contest to build a game in 48 hours.  This event's theme was: Delay the inevitable."
 run/main_scene="res://TitleScreen.tscn"
+config/icon="res://icon.png"
 
 [autoload]
 
