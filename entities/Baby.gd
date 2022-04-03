@@ -7,7 +7,7 @@ var jumping := false
 var jump_speed := 400.0
 var jump_control_time := 200 #ms
 var jump_started := 0
-var gravity := 2000
+var gravity := 2500
 var velocity := Vector2.ZERO
 var item : Node2D
 

@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 
 var mobile := false
-var speed := 400.0
+var speed := 300.0
 var jumping := false
 var jump_speed := 400.0
 var jump_control_time := 200 #ms

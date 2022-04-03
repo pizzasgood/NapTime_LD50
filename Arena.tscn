@@ -1,19 +1,14 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://entities/Baby.tscn" type="PackedScene" id=1]
 [ext_resource path="res://entities/Mom.tscn" type="PackedScene" id=2]
-[ext_resource path="res://furniture/fridge.png" type="Texture" id=3]
-[ext_resource path="res://furniture/couch.png" type="Texture" id=4]
-[ext_resource path="res://furniture/drawers.png" type="Texture" id=5]
-[ext_resource path="res://furniture/trash.png" type="Texture" id=6]
-[ext_resource path="res://furniture/Fragile.gd" type="Script" id=7]
+[ext_resource path="res://furniture/Crib.tscn" type="PackedScene" id=3]
+[ext_resource path="res://furniture/Stove.tscn" type="PackedScene" id=4]
+[ext_resource path="res://furniture/Couch.tscn" type="PackedScene" id=5]
+[ext_resource path="res://furniture/Trash.tscn" type="PackedScene" id=6]
+[ext_resource path="res://furniture/Fridge.tscn" type="PackedScene" id=7]
 [ext_resource path="res://furniture/Chandelier.tscn" type="PackedScene" id=8]
-[ext_resource path="res://furniture/stove-off.png" type="Texture" id=9]
-[ext_resource path="res://furniture/stove-on.aseprite" type="SpriteFrames" id=10]
-[ext_resource path="res://furniture/crib.png" type="Texture" id=11]
-[ext_resource path="res://sfx/stove.wav" type="AudioStream" id=12]
-[ext_resource path="res://sfx/cabinet.wav" type="AudioStream" id=13]
-[ext_resource path="res://sfx/trash.wav" type="AudioStream" id=14]
+[ext_resource path="res://furniture/Drawers.tscn" type="PackedScene" id=9]
 
 [sub_resource type="QuadMesh" id=1]
 
@@ -23,6 +18,15 @@ colors = PoolColorArray( 0.72549, 0.890196, 0.901961, 1 )
 
 [sub_resource type="GradientTexture" id=3]
 gradient = SubResource( 2 )
+
+[sub_resource type="QuadMesh" id=8]
+
+[sub_resource type="Gradient" id=9]
+offsets = PoolRealArray( 0 )
+colors = PoolColorArray( 0.529412, 0.592157, 0.658824, 1 )
+
+[sub_resource type="GradientTexture" id=10]
+gradient = SubResource( 9 )
 
 [sub_resource type="Gradient" id=4]
 offsets = PoolRealArray( 0 )
@@ -37,30 +41,6 @@ extents = Vector2( 550, 175 )
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 48.5, 330 )
 
-[sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 100, 40 )
-
-[sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 33, 62 )
-
-[sub_resource type="RectangleShape2D" id=10]
-extents = Vector2( 16, 26 )
-
-[sub_resource type="RectangleShape2D" id=12]
-extents = Vector2( 24, 16 )
-
-[sub_resource type="RectangleShape2D" id=11]
-extents = Vector2( 15, 32 )
-
-[sub_resource type="RectangleShape2D" id=13]
-extents = Vector2( 32, 14 )
-
-[sub_resource type="RectangleShape2D" id=14]
-extents = Vector2( 32, 32.5 )
-
-[sub_resource type="RectangleShape2D" id=15]
-extents = Vector2( 38, 27.5 )
-
 [node name="Arena" type="Node2D"]
 
 [node name="BG" type="MeshInstance2D" parent="."]
@@ -69,6 +49,12 @@ scale = Vector2( 1047.5, 614.75 )
 z_index = -10
 mesh = SubResource( 1 )
 texture = SubResource( 3 )
+
+[node name="Ceiling" type="MeshInstance2D" parent="."]
+position = Vector2( 516, 106.5 )
+scale = Vector2( 1060, 241 )
+mesh = SubResource( 8 )
+texture = SubResource( 10 )
 
 [node name="Floor" type="MeshInstance2D" parent="."]
 position = Vector2( 515, 594 )
@@ -91,6 +77,9 @@ __meta__ = {
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 position = Vector2( -49, 286 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
 shape = SubResource( 7 )
@@ -100,6 +89,9 @@ __meta__ = {
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="."]
 position = Vector2( 1073, 294 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
 shape = SubResource( 7 )
@@ -112,168 +104,34 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Couch" type="StaticBody2D" parent="Furniture"]
-position = Vector2( 280, 542 )
+[node name="Crib" parent="Furniture" instance=ExtResource( 3 )]
+position = Vector2( 119, 526 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/Couch"]
-shape = SubResource( 8 )
-one_way_collision = true
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="Couch" parent="Furniture" instance=ExtResource( 5 )]
+position = Vector2( 299, 542 )
 
-[node name="Sprite" type="Sprite" parent="Furniture/Couch"]
-texture = ExtResource( 4 )
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="Drawers" parent="Furniture" instance=ExtResource( 9 )]
+position = Vector2( 468, 556 )
 
-[node name="Fridge" type="StaticBody2D" parent="Furniture"]
-position = Vector2( 989, 520 )
+[node name="Drawers2" parent="Furniture" instance=ExtResource( 9 )]
+position = Vector2( 23, 557 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/Fridge"]
-shape = SubResource( 9 )
-one_way_collision = true
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="Fridge" parent="Furniture" instance=ExtResource( 7 )]
+position = Vector2( 898, 520 )
 
-[node name="Sprite" type="Sprite" parent="Furniture/Fridge"]
-texture = ExtResource( 3 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Drawers" type="StaticBody2D" parent="Furniture"]
-position = Vector2( 410, 557 )
-script = ExtResource( 7 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/Drawers"]
-shape = SubResource( 10 )
-one_way_collision = true
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Sprite" type="Sprite" parent="Furniture/Drawers"]
-texture = ExtResource( 5 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="BrokenCollisionShape2D" type="CollisionShape2D" parent="Furniture/Drawers"]
-position = Vector2( 42, 10 )
-shape = SubResource( 12 )
-disabled = true
-one_way_collision = true
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="BrokenSprite" type="Sprite" parent="Furniture/Drawers"]
-visible = false
-position = Vector2( 40, 10 )
-rotation = 1.5708
-texture = ExtResource( 5 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="SFX" type="AudioStreamPlayer" parent="Furniture/Drawers"]
-stream = ExtResource( 13 )
-
-[node name="Trash" type="StaticBody2D" parent="Furniture"]
-position = Vector2( 872, 551 )
-script = ExtResource( 7 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/Trash"]
-shape = SubResource( 11 )
-one_way_collision = true
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Sprite" type="Sprite" parent="Furniture/Trash"]
-texture = ExtResource( 6 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="BrokenCollisionShape2D" type="CollisionShape2D" parent="Furniture/Trash"]
-position = Vector2( -43, 21 )
-shape = SubResource( 13 )
-one_way_collision = true
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="BrokenSprite" type="Sprite" parent="Furniture/Trash"]
-visible = false
-position = Vector2( -43, 20 )
-rotation = -1.5708
-texture = ExtResource( 6 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="SFX" type="AudioStreamPlayer" parent="Furniture/Trash"]
-stream = ExtResource( 14 )
+[node name="Trash" parent="Furniture" instance=ExtResource( 6 )]
+position = Vector2( 999, 550 )
 
 [node name="Chandelier" parent="Furniture" instance=ExtResource( 8 )]
-position = Vector2( 706, 260 )
+position = Vector2( 626, 227 )
 
-[node name="Stove" type="StaticBody2D" parent="Furniture"]
-position = Vector2( 922, 546 )
-script = ExtResource( 7 )
-disable_collision_when_broken = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/Stove"]
-position = Vector2( 0, 4.5 )
-shape = SubResource( 14 )
-one_way_collision = true
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Sprite" type="Sprite" parent="Furniture/Stove"]
-texture = ExtResource( 9 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="BrokenSprite" type="AnimatedSprite" parent="Furniture/Stove"]
-frames = ExtResource( 10 )
-animation = "On"
-playing = true
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="SFX" type="AudioStreamPlayer" parent="Furniture/Stove"]
-stream = ExtResource( 12 )
-volume_db = -6.0
-
-[node name="Crib" type="StaticBody2D" parent="Furniture"]
-position = Vector2( 51, 550 )
-
-[node name="Sprite" type="Sprite" parent="Furniture/Crib"]
-texture = ExtResource( 11 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Furniture/Crib"]
-position = Vector2( 0, 4.5 )
-shape = SubResource( 15 )
-one_way_collision = true
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="Stove" parent="Furniture" instance=ExtResource( 4 )]
+position = Vector2( 808, 545 )
 
 [node name="Baby" parent="." instance=ExtResource( 1 )]
-position = Vector2( 52, 495 )
+position = Vector2( 129, 446 )
 z_index = 1
 
 [node name="Mom" parent="." instance=ExtResource( 2 )]
-position = Vector2( 819, 518 )
+position = Vector2( 740, 517 )
 z_index = 1
