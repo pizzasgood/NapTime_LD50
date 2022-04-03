@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://GameOver.gd" type="Script" id=1]
 [ext_resource path="res://fonts/Carlito-Bold.tres" type="DynamicFont" id=2]
+[ext_resource path="res://sfx/ohno.wav" type="AudioStream" id=3]
 
 [node name="GameOver" type="CenterContainer"]
 pause_mode = 2
@@ -49,6 +50,9 @@ margin_top = 84.0
 margin_right = 117.0
 margin_bottom = 116.0
 text = "Quit"
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/RetryButton" to="." method="_on_RetryButton_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]

@@ -1,7 +1,7 @@
 extends StaticBody2D
 
 
-export var hp := 2
+export var hp := 3
 export var collision_cooldown := 1
 export var disable_collision_when_broken := false
 
@@ -10,6 +10,7 @@ onready var sprite = find_node("Sprite")
 onready var broken_sprite = find_node("BrokenSprite")
 onready var collision_shape : CollisionShape2D = find_node("CollisionShape2D")
 onready var broken_collision_shape : CollisionShape2D = find_node("BrokenCollisionShape2D")
+onready var sfx : AudioStreamPlayer = find_node("SFX")
 
 
 func _ready() -> void:
@@ -40,3 +41,5 @@ func die() -> void:
 		broken_collision_shape.disabled = false
 	if disable_collision_when_broken:
 		collision_shape.disabled = true
+	if is_instance_valid(sfx):
+		sfx.play()

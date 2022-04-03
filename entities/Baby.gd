@@ -15,6 +15,7 @@ onready var sprite : Sprite = $Sprite
 onready var grab_zone : Area2D = $GrabZone
 onready var hands : Node2D = $Hands
 onready var mobility_reactivation_timer : Timer = $MobilityReactivationTimer
+onready var jump_sfx : AudioStreamPlayer = $JumpSFX
 
 
 func _physics_process(delta: float) -> void:
@@ -63,6 +64,7 @@ func handle_input() -> void:
 		if is_on_floor():
 			jumping = true
 			jump_started = OS.get_ticks_msec()
+			jump_sfx.play()
 		if jumping and OS.get_ticks_msec() < jump_started + jump_control_time:
 			velocity.y = -jump_speed
 		else:

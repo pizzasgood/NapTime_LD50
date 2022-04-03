@@ -11,11 +11,12 @@ var swing_thrust := TAU
 var friction := 0.2 * swing_thrust
 var pendulum_gravity := swing_thrust / 1.25
 
-export var hp : float = 5
+export var hp : float = 4
 var fall_velocity := Vector2.ZERO
 
 onready var grab_cooldown : Timer = $GrabCooldown
 onready var sprite : Sprite = $Sprite
+onready var snap_sfx : AudioStreamPlayer = find_node("SnapSFX")
 
 
 func _process(delta: float) -> void:
@@ -27,7 +28,8 @@ func _process(delta: float) -> void:
 			if hp < 0:
 				call_deferred("release_body")
 				fall_velocity = omega * Vector2.DOWN.tangent().rotated(rotation) * sprite.texture.get_height()
-				# TODO: play snapping sound
+				if is_instance_valid(snap_sfx):
+					snap_sfx.play()
 
 	# release_body assumes we're swinging and may be call_deferred, so ensure we continue swinging until rider is gone
 	if hp > 0 or is_instance_valid(rider):
@@ -101,6 +103,7 @@ func release_body() ->void:
 	rider.global_position = rider_pos
 	rider.gravity = rider_gravity
 	rider.mobility_reactivation_timer.start()
+	rider.jump_sfx.play()
 	rider = null
 	grab_cooldown.start()
 

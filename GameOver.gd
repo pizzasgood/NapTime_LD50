@@ -4,6 +4,7 @@ extends CenterContainer
 onready var retry_button : Button = find_node("RetryButton")
 onready var score_label : Label = find_node("Score")
 onready var main := find_parent("Main")
+onready var sfx : AudioStreamPlayer = find_node("SFX")
 
 
 func game_over() -> void:
@@ -12,6 +13,8 @@ func game_over() -> void:
 	var score = (OS.get_ticks_msec() - main.start_time) / 1000
 	score_label.text = "Score: %0.1f seconds" % score
 	retry_button.grab_focus()
+	if is_instance_valid(sfx):
+		sfx.play()
 
 
 func _on_RetryButton_pressed() -> void:
