@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Countdown.gd" type="Script" id=1]
+[ext_resource path="res://fonts/Carlito-Bold-BIG.tres" type="DynamicFont" id=2]
 
 [node name="Countdown" type="CenterContainer"]
 pause_mode = 2
@@ -10,9 +11,10 @@ script = ExtResource( 1 )
 
 [node name="Label" type="Label" parent="."]
 margin_left = 512.0
-margin_top = 293.0
+margin_top = 264.0
 margin_right = 512.0
-margin_bottom = 307.0
+margin_bottom = 336.0
+custom_fonts/font = ExtResource( 2 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
