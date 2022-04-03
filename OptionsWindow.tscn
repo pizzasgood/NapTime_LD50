@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://OptionsWindow.gd" type="Script" id=1]
+[ext_resource path="res://fonts/Carlito-Bold-Title.tres" type="DynamicFont" id=2]
 
 [node name="OptionsWindow" type="PopupPanel"]
 pause_mode = 2
@@ -19,79 +20,79 @@ margin_bottom = 356.0
 size_flags_horizontal = 3
 
 [node name="Header" type="Label" parent="VBoxContainer"]
-margin_right = 598.0
-margin_bottom = 14.0
-custom_colors/font_color = Color( 1, 0.866667, 0.0666667, 1 )
+margin_right = 606.0
+margin_bottom = 40.0
+custom_fonts/font = ExtResource( 2 )
 text = "Options"
+align = 1
 
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
-margin_top = 18.0
-margin_right = 598.0
-margin_bottom = 22.0
+margin_top = 44.0
+margin_right = 606.0
+margin_bottom = 48.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
-margin_top = 26.0
-margin_right = 598.0
-margin_bottom = 310.0
+margin_top = 52.0
+margin_right = 606.0
+margin_bottom = 316.0
 size_flags_vertical = 3
 
 [node name="GridContainer" type="GridContainer" parent="VBoxContainer/ScrollContainer"]
-margin_right = 598.0
+margin_right = 606.0
 margin_bottom = 56.0
 size_flags_horizontal = 3
 columns = 2
 
 [node name="MasterVolumeLabel" type="Label" parent="VBoxContainer/ScrollContainer/GridContainer"]
-margin_top = 1.0
-margin_right = 68.0
-margin_bottom = 15.0
+margin_right = 72.0
+margin_bottom = 16.0
 text = "Master Vol"
 align = 2
 
 [node name="MasterVolume" type="HSlider" parent="VBoxContainer/ScrollContainer/GridContainer"]
-margin_left = 72.0
-margin_right = 598.0
+margin_left = 76.0
+margin_right = 606.0
 margin_bottom = 16.0
 size_flags_horizontal = 3
 max_value = 1.0
 step = 0.025
 
 [node name="SFXVolumeLabel" type="Label" parent="VBoxContainer/ScrollContainer/GridContainer"]
-margin_top = 21.0
-margin_right = 68.0
-margin_bottom = 35.0
+margin_top = 20.0
+margin_right = 72.0
+margin_bottom = 36.0
 text = "SFX Vol"
 align = 2
 
 [node name="SFXVolume" type="HSlider" parent="VBoxContainer/ScrollContainer/GridContainer"]
-margin_left = 72.0
+margin_left = 76.0
 margin_top = 20.0
-margin_right = 598.0
+margin_right = 606.0
 margin_bottom = 36.0
 size_flags_horizontal = 3
 max_value = 1.0
 step = 0.025
 
 [node name="MusicVolumeLabel" type="Label" parent="VBoxContainer/ScrollContainer/GridContainer"]
-margin_top = 41.0
-margin_right = 68.0
-margin_bottom = 55.0
+margin_top = 40.0
+margin_right = 72.0
+margin_bottom = 56.0
 text = "Music Vol"
 align = 2
 
 [node name="MusicVolume" type="HSlider" parent="VBoxContainer/ScrollContainer/GridContainer"]
-margin_left = 72.0
+margin_left = 76.0
 margin_top = 40.0
-margin_right = 598.0
+margin_right = 606.0
 margin_bottom = 56.0
 size_flags_horizontal = 3
 max_value = 1.0
 step = 0.025
 
 [node name="ResumeButton" type="Button" parent="VBoxContainer"]
-margin_top = 314.0
-margin_right = 598.0
-margin_bottom = 344.0
+margin_top = 320.0
+margin_right = 606.0
+margin_bottom = 352.0
 text = "Return"
 
 [connection signal="about_to_show" from="." to="." method="_on_OptionsWindow_about_to_show"]

@@ -29,6 +29,7 @@ enabled=PoolStringArray( "res://addons/aseprite_importer/plugin.cfg" )
 [gui]
 
 theme/custom="res://main_theme.tres"
+theme/custom_font="res://fonts/Carlito-Regular.tres"
 
 [importer_defaults]
 
