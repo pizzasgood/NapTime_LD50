@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Countdown.gd" type="Script" id=1]
 [ext_resource path="res://fonts/Carlito-Bold-BIG.tres" type="DynamicFont" id=2]
+[ext_resource path="res://bgm/countdown.ogg" type="AudioStream" id=3]
 
 [node name="Countdown" type="CenterContainer"]
 pause_mode = 2
@@ -20,5 +21,10 @@ custom_fonts/font = ExtResource( 2 )
 wait_time = 3.0
 one_shot = true
 autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+autoplay = true
+bus = "SFX"
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
