@@ -16,7 +16,7 @@
 
 [sub_resource type="Gradient" id=2]
 offsets = PoolRealArray( 0 )
-colors = PoolColorArray( 0.476, 0.825067, 0.85, 1 )
+colors = PoolColorArray( 0.47451, 0.823529, 0.85098, 1 )
 
 [sub_resource type="GradientTexture" id=3]
 gradient = SubResource( 2 )
@@ -183,10 +183,10 @@ position = Vector2( 514, 556 )
 position = Vector2( 26, 557 )
 
 [node name="Fridge" parent="Furniture" instance=ExtResource( 7 )]
-position = Vector2( 898, 520 )
+position = Vector2( 907, 519 )
 
 [node name="Trash" parent="Furniture" instance=ExtResource( 6 )]
-position = Vector2( 999, 550 )
+position = Vector2( 994, 550 )
 
 [node name="Chandelier" parent="Furniture" instance=ExtResource( 8 )]
 position = Vector2( 626, 227 )

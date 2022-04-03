@@ -1,0 +1,20 @@
+[remap]
+
+importer="aseprite_importer"
+type="SpriteFrames"
+path="res://.import/crib.aseprite-f4c64aa05e97210789fff56ec151883c.tres"
+
+[deps]
+
+source_file="res://furniture/crib.aseprite"
+dest_files=[ "res://.import/crib.aseprite-f4c64aa05e97210789fff56ec151883c.tres" ]
+
+[params]
+
+mipmaps=true
+repeat=true
+filter=false
+anisotropic_filter=false
+convert_to_linear=false
+mirrored_repeat=false
+video_surface=false
