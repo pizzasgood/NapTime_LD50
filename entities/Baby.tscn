@@ -28,3 +28,9 @@ position = Vector2( 13, -9 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GrabZone"]
 position = Vector2( 0.5, 0 )
 shape = SubResource( 9 )
+
+[node name="MobilityReactivationTimer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[connection signal="timeout" from="MobilityReactivationTimer" to="." method="_on_MobilityReactivationTimer_timeout"]

@@ -88,7 +88,7 @@ func handle_ai() -> void:
 	update_reaction_buffer()
 	var now = OS.get_ticks_msec()
 	var new_state = ai_virtual_actions.duplicate(true)
-	var x_diff = target.position.x - self.position.x #TODO: maybe add prediction to compensate for reaction time and mitigate overshoot
+	var x_diff = target.global_position.x - self.global_position.x #TODO: maybe add prediction to compensate for reaction time and mitigate overshoot
 	if abs(x_diff) < 24:
 			new_state.erase("ui_right")
 			new_state.erase("ui_left")

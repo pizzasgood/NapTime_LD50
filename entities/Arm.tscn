@@ -4,6 +4,7 @@
 [ext_resource path="res://entities/Arm.gd" type="Script" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
+radius = 4.0
 
 [node name="Arm" type="Node2D"]
 script = ExtResource( 2 )

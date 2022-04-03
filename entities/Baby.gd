@@ -7,16 +7,17 @@ var jumping := false
 var jump_speed := 400.0
 var jump_control_time := 200 #ms
 var jump_started := 0
-var gravity := 32
+var gravity := 2000
 var velocity := Vector2.ZERO
 var item : Node2D
 
 onready var sprite : Sprite = $Sprite
 onready var grab_zone : Area2D = $GrabZone
 onready var hands : Node2D = $Hands
+onready var mobility_reactivation_timer : Timer = $MobilityReactivationTimer
 
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if mobile:
 		handle_input()
 
@@ -30,8 +31,14 @@ func _physics_process(_delta: float) -> void:
 		if is_on_floor():
 			velocity.y = 0
 		else:
-			velocity.y += gravity
+			velocity.y += gravity * delta
 		move_and_slide_with_snap(velocity, Vector2.DOWN, Vector2.UP)
+
+	if get_slide_count() > 0:
+		for i in range(get_slide_count()):
+			var c = get_slide_collision(i)
+			if c.collider.has_method("process_collision"):
+				c.collider.process_collision(self)
 
 
 func _process(_delta: float) -> void:
@@ -120,3 +127,7 @@ func use_item() -> void:
 func stop_using_item() -> void:
 	if item == null:
 		return
+
+
+func _on_MobilityReactivationTimer_timeout() -> void:
+	mobile = true
