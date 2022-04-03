@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://furniture/table.png" type="Texture" id=1]
+[ext_resource path="res://furniture/Fragile.gd" type="Script" id=2]
+[ext_resource path="res://furniture/table-broken.png" type="Texture" id=3]
+[ext_resource path="res://sfx/cabinet.wav" type="AudioStream" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 80, 27.5 )
+
+[node name="Table" type="StaticBody2D"]
+script = ExtResource( 2 )
+hp = 5
+disable_collision_when_broken = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 0.5 )
+shape = SubResource( 1 )
+one_way_collision = true
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+offset = Vector2( 0, 0.5 )
+
+[node name="BrokenSprite" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0, 22 )
+texture = ExtResource( 3 )
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
