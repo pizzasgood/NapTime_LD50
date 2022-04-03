@@ -6,8 +6,8 @@ export var collision_cooldown := 1
 export var disable_collision_when_broken := false
 
 var collision_timer : Timer
-onready var sprite : Sprite = find_node("Sprite")
-onready var broken_sprite : Sprite = find_node("BrokenSprite")
+onready var sprite = find_node("Sprite")
+onready var broken_sprite = find_node("BrokenSprite")
 onready var collision_shape : CollisionShape2D = find_node("CollisionShape2D")
 onready var broken_collision_shape : CollisionShape2D = find_node("BrokenCollisionShape2D")
 
