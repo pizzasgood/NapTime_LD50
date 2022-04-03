@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/mom-upright.png-d945dbe073e65e9e6145a4da2a011366.stex"
+path="res://.import/mom.png-4a8db8e9417444d6a7a3c11e489442e2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/mom-upright.png"
-dest_files=[ "res://.import/mom-upright.png-d945dbe073e65e9e6145a4da2a011366.stex" ]
+source_file="res://entities/mom.png"
+dest_files=[ "res://.import/mom.png-4a8db8e9417444d6a7a3c11e489442e2.stex" ]
 
 [params]
 
