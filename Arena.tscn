@@ -77,13 +77,10 @@ __meta__ = {
 }
 
 [node name="Ceiling" type="MeshInstance2D" parent="."]
-position = Vector2( 516, 106.5 )
-scale = Vector2( 1060, 241 )
+position = Vector2( 515, 106.5 )
+scale = Vector2( 1047, 241 )
 mesh = SubResource( 8 )
 texture = SubResource( 10 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Ceiling"]
 position = Vector2( 0, 0.526971 )
@@ -127,14 +124,12 @@ __meta__ = {
 
 [node name="TopBound" type="StaticBody2D" parent="."]
 position = Vector2( 0, -500 )
-scale = Vector2( 1, 1 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TopBound"]
 position = Vector2( 512.5, -44.5 )
-scale = Vector2( 1, 1 )
 shape = SubResource( 17 )
 __meta__ = {
 "_edit_lock_": true
