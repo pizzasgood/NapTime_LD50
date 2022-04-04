@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://TitleScreen.gd" type="Script" id=1]
 [ext_resource path="res://AboutWindow.tscn" type="PackedScene" id=2]
 [ext_resource path="res://OptionsWindow.tscn" type="PackedScene" id=3]
 [ext_resource path="res://fonts/Carlito-Bold-Title.tres" type="DynamicFont" id=4]
-[ext_resource path="res://fonts/Carlito-Italic.tres" type="DynamicFont" id=5]
 [ext_resource path="res://fonts/Carlito-Bold.tres" type="DynamicFont" id=6]
 [ext_resource path="res://Arena.tscn" type="PackedScene" id=7]
 
@@ -67,7 +66,6 @@ text = "Options"
 margin_top = 72.0
 margin_right = 66.0
 margin_bottom = 104.0
-custom_fonts/font = ExtResource( 5 )
 text = "About"
 
 [node name="ExitButton" type="Button" parent="CanvasLayer/CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
